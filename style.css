@@ -1,0 +1,75 @@
+body {
+  font-size: 1.3em;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  max-width: 600px;
+  margin: auto;
+  padding: 3vw;
+}
+
+body > p {
+  line-height: 1.5em;
+
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+
+form {
+  /* only show via JS */
+  display: none;
+}
+
+form > table {
+  margin: auto;
+  border-collapse: collapse;
+  text-align: right;
+}
+
+form > table col {
+  width: 50%;
+}
+
+form > table > thead {
+  border-bottom: 1px solid black;
+}
+
+form table td, form table th {
+  padding: 0.3em 0.5em;
+}
+
+form > table > tbody tr:hover {
+  background-color: #EEE;
+  cursor: pointer;
+}
+
+form > table > tbody tr:active,
+form > table > tbody tr.selected {
+  background-color: #E5E5E5;
+}
+
+form > table > tbody tr.reference-format {
+  outline: 1px dashed black;
+}
+
+form > table > tbody tr td:first-child {
+  /*text-align: center;*/
+}
+
+form > table > tbody tr td:last-child {
+  font-family: monospace;
+  white-space: nowrap;
+  /*text-align: right;*/
+}
+
+input[type=range] {
+  margin: 0;
+  width: 100%;
+}
+
+body > footer {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 0.9rem;
+  padding-top: 0.5em;
+  border-top: 1px solid black;
+}
