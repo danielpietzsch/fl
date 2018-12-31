@@ -14,6 +14,12 @@ body > p {
   hyphens: auto;
 }
 
+body > p > small {
+  line-height: 1em;
+  color: #666;
+  font-style: italic;
+}
+
 form {
   /* only show via JS */
   display: none;
