@@ -34,11 +34,6 @@ noscript table td {
   white-space: nowrap;
 }
 
-noscript table td::after {
-  content: 'mm';
-  font-size: 0.8em;
-}
-
 noscript table tr.full-frame {
   outline: 1px dashed black;
 }
