@@ -52,16 +52,17 @@ function _addUIElementsForFormatsToForm(formats, form) {
   let tableBody = document.querySelector('form > table > tbody')
 
   formats.forEach(function (format, index, array) {
-    template.content.querySelector('label').textContent = format.name
-    template.content.querySelector('label').setAttribute('title', `Dimensions: ${format.widthInMm} x ${format.heightInMm} mm`)
-    template.content.querySelector('output').setAttribute('id', _domIDForFormatName(format.name))
+    let newformatOutput = document.importNode(template.content, true)
+
+    newformatOutput.querySelector('label').textContent = format.name
+    newformatOutput.querySelector('label').setAttribute('title', `Dimensions: ${format.widthInMm} x ${format.heightInMm} mm`)
+    newformatOutput.querySelector('output').setAttribute('id', _domIDForFormatName(format.name))
+
     if (format.name === format35mm.name) {
-      template.content.querySelector('tr').setAttribute('class', 'reference-format')
-    } else {
-      template.content.querySelector('tr').removeAttribute('class')
+      newformatOutput.querySelector('tr').setAttribute('class', 'reference-format')
     }
 
-    tableBody.appendChild(document.importNode(template.content, true))
+    tableBody.appendChild(newformatOutput)
   })
 }
 
