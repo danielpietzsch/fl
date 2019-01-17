@@ -1,28 +1,25 @@
 body {
-  font-size: calc(1em + 0.7vw);
   font-family: system-ui, sans-serif;
+  font-size: calc(1em + 0.7vw);
+  line-height: 1.5;
   max-width: 700px;
   margin: auto;
-  padding: 3vw;
+  padding: 2vh 3vw;
 }
 
 body > p {
-  line-height: 1.5em;
-
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
 }
 
 body > p > small {
-  line-height: 1em;
   color: #666;
   font-style: italic;
 }
 
 form {
-  /* only show via JS */
-  display: none;
+  display: none; /* show only via JS */
 }
 
 form > table {
@@ -64,7 +61,6 @@ form > table > tbody tr td:first-child {
 form > table > tbody tr td:last-child {
   font-family: monospace;
   white-space: nowrap;
-  /*text-align: right;*/
 }
 
 input[type=range] {
@@ -75,11 +71,10 @@ input[type=range] {
 body > footer {
   text-align: center;
   margin-top: 2em;
-  font-size: 0.9rem;
+  font-size: smaller;
   padding-top: 0.5em;
   border-top: 1px solid black;
 }
-
 
 @media (min-width: 701px) {
   body {
