@@ -27,7 +27,7 @@ noscript table tr td {
 }
 
 noscript table col:nth-of-type(even) {
-  background: #eee;
+  background-color: #eee;
 }
 
 noscript table td {
@@ -44,4 +44,18 @@ noscript table tr:hover {
 
 noscript table col:hover {
   font-size: 2em;
+}
+
+@media (prefers-color-scheme: dark) {
+  noscript table tr th {
+    background-color: #222;
+  }
+
+  noscript table col:nth-of-type(even) {
+    background-color: #111;
+  }
+
+  noscript table tr.full-frame {
+    outline-color: white;
+  }
 }

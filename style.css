@@ -81,3 +81,38 @@ body > footer {
     font-size: 1.306em;
   }
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: #DDD;
+    background-color: #222;
+  }
+
+  a { color: #88F; }
+  a:visited { color: #AAF; }
+
+  body > footer {
+    border-top-color: white;
+  }
+
+  body > p > small {
+    color: #AAA;
+  }
+
+  form > table > thead {
+    border-bottom-color: white;
+  }
+
+  form > table > tbody tr:hover {
+    background-color: #555;
+  }
+
+  form > table > tbody tr:active,
+  form > table > tbody tr.selected {
+    background-color: #444;
+  }
+
+  form > table > tbody tr.reference-format {
+    outline-color: white;
+  }
+}
