@@ -1,4 +1,15 @@
+:root {
+  supported-color-schemes: light dark;
+  color-scheme: light dark;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 body {
+  animation: fade-in 0.4s;
   font-family: system-ui, sans-serif;
   font-size: calc(1em + 0.7vw);
   line-height: 1.5;
@@ -33,7 +44,7 @@ form > table col {
 }
 
 form > table > thead {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid;
 }
 
 form table td, form table th {
@@ -51,7 +62,7 @@ form > table > tbody tr.selected {
 }
 
 form > table > tbody tr.reference-format {
-  outline: 1px dashed black;
+  outline: 1px dashed;
 }
 
 form > table > tbody tr td:first-child {
@@ -73,7 +84,7 @@ body > footer {
   margin-top: 2em;
   font-size: smaller;
   padding-top: 0.5em;
-  border-top: 1px solid black;
+  border-top: 1px solid;
 }
 
 @media (min-width: 701px) {
@@ -83,26 +94,6 @@ body > footer {
 }
 
 @media (prefers-color-scheme: dark) {
-  body {
-    color: #DDD;
-    background-color: #222;
-  }
-
-  a { color: #88F; }
-  a:visited { color: #AAF; }
-
-  body > footer {
-    border-top-color: white;
-  }
-
-  body > p > small {
-    color: #AAA;
-  }
-
-  form > table > thead {
-    border-bottom-color: white;
-  }
-
   form > table > tbody tr:hover {
     background-color: #555;
   }
@@ -110,9 +101,5 @@ body > footer {
   form > table > tbody tr:active,
   form > table > tbody tr.selected {
     background-color: #444;
-  }
-
-  form > table > tbody tr.reference-format {
-    outline-color: white;
   }
 }
