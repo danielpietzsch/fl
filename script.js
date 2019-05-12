@@ -45,6 +45,8 @@ function init() {
   _addUIElementsForFormatsToForm(formats, form)
   _initRangeSlider()
   _initTableRowListeners()
+
+  _registerServiceWorker()
 }
 
 function _addUIElementsForFormatsToForm(formats, form) {
@@ -98,6 +100,12 @@ function _initTableRowListeners() {
 
 function _domIDForFormatName(name) {
   return `result_${name.replace('.', '').replace(' ', '').toLowerCase()}`
+}
+
+function _registerServiceWorker() {
+  if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
+    navigator.serviceWorker.register('/serviceworker.js')
+  }
 }
 
 window.onload = function() {
