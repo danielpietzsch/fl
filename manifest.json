@@ -2,6 +2,8 @@
   "name": "Focal Length Equivalents",
   "short_name": "FLE",
   "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
   "start_url": "/",
   "icons": [
     {
