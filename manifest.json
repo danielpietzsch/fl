@@ -2,7 +2,7 @@
   "name": "Focal Length Equivalents",
   "short_name": "FLE",
   "display": "standalone",
-  "start_url": "/fl/",
+  "start_url": "/",
   "icons": [
     {
       "src": "icon_192.png",
