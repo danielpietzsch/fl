@@ -104,7 +104,7 @@ function _domIDForFormatName(name) {
 
 function _registerServiceWorker() {
   if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
-    navigator.serviceWorker.register('/fl/serviceworker.js')
+    navigator.serviceWorker.register('/serviceworker.js')
   }
 }
 
