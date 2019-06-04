@@ -94,6 +94,18 @@ body > footer {
 }
 
 @media (prefers-color-scheme: dark) {
+  body {
+    color: #DDD;
+    background-color: #222;
+  }
+
+  a { color: #88F; }
+  a:visited { color: #AAF; }
+
+  body > p > small {
+    color: #AAA;
+  }
+
   form > table > tbody tr:hover {
     background-color: #555;
   }
