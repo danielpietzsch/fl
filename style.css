@@ -102,6 +102,15 @@ body > footer {
   a { color: #88F; }
   a:visited { color: #AAF; }
 
+  input[type=range] {
+    background: transparent;
+  }
+
+  input[type=range]::-moz-range-track,
+  input[type=range]::-webkit-slider-runnable-track {
+    background: #DDD;
+  }
+
   body > p > small {
     color: #AAA;
   }
