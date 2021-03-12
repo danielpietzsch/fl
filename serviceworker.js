@@ -1,6 +1,5 @@
-// HTML files: try the network first, then the cache.
-// Other files: try the cache first, then the network.
-// Both: cache a fresh version if possible.
+// Modified from https://gist.github.com/adactio/3717b7da007a9363ddf21f584aae34af
+// All files: try the cache first, then the network. Cache a fresh version if possible.
 // (beware: the cache will grow and grow; there's no cleanup)
 const cacheName = 'files';
 
