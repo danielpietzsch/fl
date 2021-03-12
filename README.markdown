@@ -6,6 +6,12 @@
 * combing "Calculation" and "Imaging format sizes"
 * refine typohraphy
 * explicit background color for body and or html elements (dark mode in MacOS might otherwise fuck things up)
+* Add size of formats
+  - Also area
+* Add angle of view (horizontal)
+* Make column for horizontal FL comparison
+* Add Polaroid and Instax Wide and Mini (maybe just as additional info)
+* Maybe add smartphone sensor sizes.
 
 ## IDEAs
 
