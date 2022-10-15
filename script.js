@@ -78,7 +78,7 @@ function _initRangeSlider() {
   let datalist = document.getElementById('popular-focal-lengths')
 
   format35mm.commonFocalLengths.forEach(function (focalLength, index, array) {
-    datalist.insertAdjacentHTML('beforeend', `<option>${Math.round(largestFormat.equivalentToFocalLengthInFormat(focalLength, format35mm))}</option>`)
+    datalist.insertAdjacentHTML('beforeend', `<option label="ƒ=${Math.round(focalLength)}mm in 35mm format">${Math.round(largestFormat.equivalentToFocalLengthInFormat(focalLength, format35mm))}</option>`)
   })
 }
 
