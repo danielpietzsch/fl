@@ -125,12 +125,11 @@ body > footer {
   }
 }
 
-/* making sure an h2 within the summary does not display the details arrow on a separate line */
 summary {
   cursor: pointer;
 }
 
-//making sure an h2 within the summary does not display the details arrow on a separate line
+/* making sure an h2 within the summary does not display the details arrow on a separate line */
 summary h2 {
   display: inline;
 }
