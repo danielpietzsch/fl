@@ -58,6 +58,7 @@ function _addUIElementsForFormatsToForm(formats, form) {
 
     newformatOutput.querySelector('label').textContent = format.name
     newformatOutput.querySelector('label').setAttribute('title', `Dimensions: ${format.widthInMm} x ${format.heightInMm} mm`)
+    newformatOutput.querySelector('small').textContent = `Dimensions: ${format.widthInMm} x ${format.heightInMm} mm`
     newformatOutput.querySelector('output').setAttribute('id', _domIDForFormatName(format.name))
 
     if (format.name === format35mm.name) {
