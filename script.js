@@ -105,6 +105,7 @@ function _domIDForFormatName(name) {
 
 function _registerServiceWorker() {
   if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
+    console.log("Registering service worker!")
     navigator.serviceWorker.register('/serviceworker.js')
   }
 }
