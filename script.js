@@ -11,8 +11,14 @@ function updateOutputs(e) {
 
   for (var i = formats.length - 1; i >= 0; i--) {
     let outputElement = document.getElementById(_domIDForFormatName(formats[i].name))
+    let equivalentFocalLength = Math.round(formats[i].equivalentToFocalLengthInFormat(sliderValue, largestFormat))
 
-    outputElement.value = Math.round(formats[i].equivalentToFocalLengthInFormat(sliderValue, largestFormat)) + " mm"
+    if (formats[i].name === format35mm.name) {
+      let diagonalFOV = 2 * Math.atan(formats[i].diagonalInMm() / (2 * equivalentFocalLength)) * (180 / Math.PI)
+      outputElement.innerHTML = `<abbr title="Diagonal Field of View in degrees">∡<small>${diagonalFOV.toFixed(0)}°</small></abbr> ${equivalentFocalLength} mm`
+    } else {
+      outputElement.value = `${equivalentFocalLength} mm`
+    }
   }
 }
 
