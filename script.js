@@ -28,6 +28,7 @@ function init() {
   formats = [
     new ImagingFormat("Micro 4/3", 18, 13.5),
     new ImagingFormat("APS-C", 24, 16),
+    new ImagingFormat("APS-H", 27.9, 18.6),
     format35mm,
     new ImagingFormat("Fuji GFX", 43.8, 32.9),
     new ImagingFormat("6x4.5", 56, 41.5),
