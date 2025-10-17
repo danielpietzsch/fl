@@ -32,6 +32,8 @@ function init() {
   format35mm.setCommonFocalLengths([10, 16, 21, 24, 28, 35, format35mm.diagonalInMm(), 50, 85, 100, 135, 200])
 
   formats = [
+    new ImagingFormat("16mm", 10.26, 7.49),
+    new ImagingFormat("Super 16", 12.52, 7.41),
     new ImagingFormat("Micro 4/3", 18, 13.5),
     new ImagingFormat("APS-C", 24, 16),
     new ImagingFormat("APS-H", 27.9, 18.6),
