@@ -34,6 +34,7 @@ function init() {
     new ImagingFormat("6x4.5", 56, 41.5),
     new ImagingFormat("6x6", 56, 56),
     new ImagingFormat("6x7", 56, 67),
+    new ImagingFormat("70mm", 70.41, 52.63),
     new ImagingFormat("6x8", 56, 77),
     new ImagingFormat("6x9", 56, 84),
     new ImagingFormat("4x5", 120, 95),
