@@ -24,8 +24,11 @@ body > p {
   hyphens: auto;
 }
 
-body p small {
+small {
   color: #666;
+}
+
+body p small {
   font-style: italic;
 }
 
@@ -111,7 +114,7 @@ body > footer {
     background: #DDD;
   }
 
-  body > p > small {
+  small {
     color: #AAA;
   }
 

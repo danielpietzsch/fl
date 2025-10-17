@@ -15,7 +15,7 @@ function updateOutputs(e) {
 
     if (formats[i].name === format35mm.name) {
       let diagonalFOV = 2 * Math.atan(formats[i].diagonalInMm() / (2 * equivalentFocalLength)) * (180 / Math.PI)
-      outputElement.innerHTML = `<abbr title="Diagonal Field of View in degrees">∡<small>${diagonalFOV.toFixed(0)}°</small></abbr> ${equivalentFocalLength} mm`
+      outputElement.innerHTML = `<small title="Diagonal Field of View in degrees">⤢${diagonalFOV.toFixed(0)}°</small> ${equivalentFocalLength} mm`
     } else {
       outputElement.value = `${equivalentFocalLength} mm`
     }
