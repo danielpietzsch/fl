@@ -4,21 +4,22 @@ var format35mm
 function updateOutputs(e) {
   let largestFormat = formats[formats.length - 1]
   let sliderValue   = largestFormat.normalFocalLength() //default
+  let fovElement    = document.querySelector('form > table > tfoot output')
 
   if (e && e.target.value) {
     sliderValue = parseInt(e.target.value)
   }
 
+  // Updating the FOV value
+  let fl35mm = Math.round(format35mm.equivalentToFocalLengthInFormat(sliderValue, largestFormat))
+  let diagonalFOV = 2 * Math.atan(format35mm.diagonalInMm() / (2 * fl35mm)) * (180 / Math.PI)
+  fovElement.value = `${diagonalFOV.toFixed(0)}°`
+
+  // Updating all focal length values
   for (var i = formats.length - 1; i >= 0; i--) {
     let outputElement = document.getElementById(_domIDForFormatName(formats[i].name))
     let equivalentFocalLength = Math.round(formats[i].equivalentToFocalLengthInFormat(sliderValue, largestFormat))
-
-    if (formats[i].name === format35mm.name) {
-      let diagonalFOV = 2 * Math.atan(formats[i].diagonalInMm() / (2 * equivalentFocalLength)) * (180 / Math.PI)
-      outputElement.innerHTML = `<small title="Diagonal Field of View in degrees">⤢${diagonalFOV.toFixed(0)}°</small> ${equivalentFocalLength} mm`
-    } else {
-      outputElement.value = `${equivalentFocalLength} mm`
-    }
+    outputElement.value = `${equivalentFocalLength} mm`
   }
 }
 

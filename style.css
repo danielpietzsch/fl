@@ -24,7 +24,7 @@ body > p {
   hyphens: auto;
 }
 
-small {
+small, tfoot {
   color: #666;
 }
 
@@ -73,11 +73,12 @@ form > table > tbody td {
   padding: 5px 9px;
 }
 
-form > table > tbody tr td:first-child {
-  /*text-align: center;*/
+form > table > tfoot {
+  font-size: smaller;
 }
 
-form > table > tbody tr td:last-child {
+form > table > tbody tr td:last-child,
+form > table > tfoot tr td:last-child {
   font-family: monospace;
   white-space: nowrap;
 }
@@ -119,7 +120,7 @@ body > footer {
     background: #DDD;
   }
 
-  small {
+  small, tfoot {
     color: #AAA;
   }
 
