@@ -34,7 +34,7 @@ function init() {
   formats = [
     new ImagingFormat("16mm", 10.26, 7.49),
     new ImagingFormat("Super 16", 12.52, 7.41),
-    new ImagingFormat("Micro ⁴⁄₃", 18, 13.5),
+    new ImagingFormat("Micro 4/3", 18, 13.5),
     new ImagingFormat("APS-C", 24, 16),
     new ImagingFormat("APS-H", 27.9, 18.6),
     format35mm,
