@@ -67,8 +67,8 @@ function _addUIElementsForFormatsToForm(formats, form) {
   formats.forEach(function (format, index, array) {
     let newformatOutput = document.importNode(template.content, true)
 
-    newformatOutput.querySelector('label').textContent = format.name
-    newformatOutput.querySelector('label').setAttribute('title', `Dimensions: ${format.widthInMm} x ${format.heightInMm} mm`)
+    newformatOutput.querySelector('td').textContent = format.name
+    newformatOutput.querySelector('td').setAttribute('title', `Dimensions: ${format.widthInMm} x ${format.heightInMm} mm`)
     newformatOutput.querySelector('output').setAttribute('id', _domIDForFormatName(format.name))
 
     if (format.name === format35mm.name) {
