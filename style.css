@@ -66,6 +66,11 @@ form > table > tbody tr.selected {
 
 form > table > tbody tr.reference-format {
   outline: 1px dashed;
+  border-radius: 5px;
+}
+
+form > table > tbody td {
+  padding: 5px 9px;
 }
 
 form > table > tbody tr td:first-child {
