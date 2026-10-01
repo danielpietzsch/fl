@@ -37,7 +37,7 @@ form {
 }
 
 form > table {
-  margin: auto auto 1em auto;
+  margin: auto; /* spacing below comes from the slider's faded top */
   border-collapse: collapse;
   text-align: right;
 }
@@ -88,6 +88,20 @@ input[type=range] {
   width: 100%;
 }
 
+/* keeps the slider on screen when the list of formats is taller than the viewport */
+form > .slider {
+  position: sticky;
+  bottom: 0;
+  padding: 1em 0 0.5em 0;
+  /* translucent, so the formats scrolling underneath hint at more content */
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  /* fades in the top edge, within the padding */
+  -webkit-mask-image: linear-gradient(transparent, black 1em);
+  mask-image: linear-gradient(transparent, black 1em);
+}
+
 body > footer {
   text-align: center;
   margin-top: 2em;
@@ -113,6 +127,10 @@ body > footer {
 
   input[type=range] {
     background: transparent;
+  }
+
+  form > .slider {
+    background-color: rgba(34, 34, 34, 0.7);
   }
 
   input[type=range]::-moz-range-track,
