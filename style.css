@@ -46,8 +46,11 @@ form > table col {
   width: 50%;
 }
 
-form > table > thead {
-  border-bottom: 1px solid;
+/* keeps the column headings on screen while scrolling through the formats */
+form > table > thead th {
+  position: sticky;
+  top: 0;
+  box-shadow: inset 0 -1px; /* a border wouldn't stick along with it */
 }
 
 form table td, form table th {
@@ -93,13 +96,17 @@ form > .slider {
   position: sticky;
   bottom: 0;
   padding: 1em 0 0.5em 0;
-  /* translucent, so the formats scrolling underneath hint at more content */
-  background-color: rgba(255, 255, 255, 0.7);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
   /* fades in the top edge, within the padding */
   -webkit-mask-image: linear-gradient(transparent, black 1em);
   mask-image: linear-gradient(transparent, black 1em);
+}
+
+/* translucent, so the formats scrolling underneath hint at more content */
+form > table > thead th,
+form > .slider {
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
 }
 
 body > footer {
@@ -129,6 +136,7 @@ body > footer {
     background: transparent;
   }
 
+  form > table > thead th,
   form > .slider {
     background-color: rgba(34, 34, 34, 0.7);
   }
