@@ -5,7 +5,6 @@
 noscript figure {
   overflow-x: scroll;
   margin: 0;
-  -webkit-overflow-scrolling: touch;
 }
 
 noscript table {
