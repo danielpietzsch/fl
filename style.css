@@ -57,13 +57,22 @@ table.interactive td, table.interactive th {
   padding: 0.3em 0.5em;
 }
 
-table.interactive > tbody tr:hover {
+/* backgrounds go on the cells, as only those can have rounded corners */
+table.interactive > tbody td:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+table.interactive > tbody td:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+table.interactive > tbody tr:hover td {
   background-color: #EEE;
   cursor: pointer;
 }
 
-table.interactive > tbody tr:active,
-table.interactive > tbody tr.selected {
+table.interactive > tbody tr:active td,
+table.interactive > tbody tr.selected td {
   background-color: #E5E5E5;
 }
 
@@ -105,7 +114,7 @@ form {
 
 /* translucent, so the formats scrolling underneath hint at more content */
 table.interactive > thead th,
-tr.reference-format,
+tr.reference-format td,
 form {
   background-color: rgba(255, 255, 255, 0.7);
   -webkit-backdrop-filter: blur(4px);
@@ -140,7 +149,7 @@ body > footer {
   }
 
   table.interactive > thead th,
-  tr.reference-format,
+  tr.reference-format td,
   form {
     background-color: rgba(34, 34, 34, 0.7);
   }
@@ -154,12 +163,12 @@ body > footer {
     color: #AAA;
   }
 
-  table.interactive > tbody tr:hover {
+  table.interactive > tbody tr:hover td {
     background-color: #555;
   }
 
-  table.interactive > tbody tr:active,
-  table.interactive > tbody tr.selected {
+  table.interactive > tbody tr:active td,
+  table.interactive > tbody tr.selected td {
     background-color: #444;
   }
 }
