@@ -14,7 +14,8 @@ addEventListener('fetch',  fetchEvent => {
 
   fetchEvent.respondWith(async function() {
     try {
-      const responseFromFetch = await fetch(request);
+      // no-cache: always check with the server, instead of using the browser's own cached copy
+      const responseFromFetch = await fetch(request, { cache: 'no-cache' });
       const responseCopy = responseFromFetch.clone();
 
       fetchEvent.waitUntil(async function() {
