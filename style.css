@@ -20,7 +20,7 @@ body {
   font-family: system-ui, sans-serif;
   font-size: 1.125em;
   line-height: 1.5;
-  max-width: 700px;
+  max-width: 34em;
   margin: auto;
   padding: 2vh 3vw;
 }
