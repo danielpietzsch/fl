@@ -37,9 +37,8 @@
 body {
   animation: fade-in 0.4s;
   font-family: system-ui, sans-serif;
-  font-size: 1.125em;
   line-height: 1.5;
-  max-width: 34em;
+  max-width: 36em;
   margin: auto;
   padding: 2vh 3vw;
   color: var(--text);
@@ -65,6 +64,11 @@ small, tfoot {
 
 body p small {
   font-style: italic;
+}
+
+table.interactive,
+form {
+  font-size: 1.125em;
 }
 
 table.interactive {
