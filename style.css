@@ -70,6 +70,8 @@ form > table > tbody tr.selected {
 form > table > tbody tr.reference-format {
   outline: 1px dashed;
   border-radius: 5px;
+  position: sticky;
+  top: 2.1em; /* header height: line-height + padding */
 }
 
 form > table > tbody td {
@@ -103,6 +105,7 @@ form > .slider {
 
 /* translucent, so the formats scrolling underneath hint at more content */
 form > table > thead th,
+tr.reference-format,
 form > .slider {
   background-color: rgba(255, 255, 255, 0.7);
   -webkit-backdrop-filter: blur(4px);
@@ -137,6 +140,7 @@ body > footer {
   }
 
   form > table > thead th,
+  tr.reference-format,
   form > .slider {
     background-color: rgba(34, 34, 34, 0.7);
   }
