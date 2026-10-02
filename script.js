@@ -5,10 +5,13 @@ var format35mm
 const logScale = new URLSearchParams(location.search).get('scale') === 'log'
 
 // The slider's range, as focal lengths in 35mm format.
-// Linear, each step is 1 mm. Logarithmic, each step changes the focal length by the same factor (about 2%).
+// Linear, each step adds the same length. Logarithmic, each step changes the focal length by the same factor.
 const minFocalLength = 10
 const maxFocalLength = logScale ? 500 : 200
-const sliderSteps    = 190
+
+// Set in _initRangeSlider, so that each step changes the largest format's focal length by at most 1 mm,
+// which keeps every whole mm reachable in every format
+var sliderSteps
 
 function updateOutputs() {
   let focalLengthSlider = document.getElementById('focal-length')
@@ -64,6 +67,7 @@ function init() {
 
   _addUIElementsForFormats(formats)
   _initRangeSlider()
+  _initSliderKeys()
   // Temporary: marking the current scale in the switch in the footer
   document.querySelector(`[data-scale="${logScale ? 'log' : 'linear'}"]`).setAttribute('aria-current', 'true')
   _initTableRowListeners()
@@ -92,6 +96,13 @@ function _addUIElementsForFormats(formats) {
 
 function _initRangeSlider() {
   let focalLengthSlider = document.getElementById('focal-length')
+  let largestFormatRatio = formats[formats.length - 1].diagonalInMm() / format35mm.diagonalInMm()
+
+  if (logScale) {
+    sliderSteps = Math.ceil(Math.log(maxFocalLength / minFocalLength) / Math.log(1 + 1 / (maxFocalLength * largestFormatRatio)))
+  } else {
+    sliderSteps = Math.ceil((maxFocalLength - minFocalLength) * largestFormatRatio)
+  }
 
   focalLengthSlider.setAttribute('max', sliderSteps)
   focalLengthSlider.value = _sliderValueForFocalLength(format35mm.diagonalInMm())
@@ -129,6 +140,37 @@ function _sliderPositionForFocalLength(focalLength) {
   } else {
     return sliderSteps * (focalLength - minFocalLength) / (maxFocalLength - minFocalLength)
   }
+}
+
+// The slider's steps are very fine, so the keys move it in more useful amounts: the arrow keys to the next
+// whole mm in 35mm format, Page Up/Down to the next popular focal length
+function _initSliderKeys() {
+  let focalLengthSlider = document.getElementById('focal-length')
+
+  focalLengthSlider.addEventListener('keydown', function (e) {
+    let direction = { ArrowUp: 1, ArrowRight: 1, PageUp: 1, ArrowDown: -1, ArrowLeft: -1, PageDown: -1 }[e.key]
+    if (!direction) return
+
+    let focalLength = _focalLengthForSliderValue(parseInt(focalLengthSlider.value))
+    let targetFocalLength
+
+    if (e.key.startsWith('Page')) {
+      let popularFocalLengths = format35mm.commonFocalLengths.filter(function (popular) {
+        return direction > 0 ? popular > focalLength + 0.01 : popular < focalLength - 0.01
+      })
+      if (popularFocalLengths.length == 0) return
+      targetFocalLength = direction > 0 ? Math.min(...popularFocalLengths) : Math.max(...popularFocalLengths)
+    } else {
+      targetFocalLength = Math.round(focalLength) + direction
+    }
+
+    let sliderValue = _sliderValueForFocalLength(targetFocalLength)
+    if (sliderValue == focalLengthSlider.value) sliderValue += direction // always move at least one step
+
+    e.preventDefault()
+    focalLengthSlider.value = Math.min(Math.max(sliderValue, 0), sliderSteps)
+    focalLengthSlider.dispatchEvent(new Event('input', { bubbles: true }))
+  })
 }
 
 function _initTableRowListeners() {
