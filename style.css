@@ -32,62 +32,58 @@ body p small {
   font-style: italic;
 }
 
-form {
-  display: none; /* show only via JS */
-}
-
-form > table {
+table.interactive {
   margin: auto; /* spacing below comes from the slider's faded top */
   border-collapse: separate; /* so the header's border belongs to its cells and sticks along */
   border-spacing: 0;
   text-align: right;
 }
 
-form > table col {
+table.interactive col {
   width: 50%;
 }
 
 /* keeps the column headings on screen while scrolling through the formats */
-form > table > thead {
+table.interactive > thead {
   position: sticky;
   top: 0;
 }
 
-form > table > thead th {
+table.interactive > thead th {
   border-bottom: 1px solid;
 }
 
-form table td, form table th {
+table.interactive td, table.interactive th {
   padding: 0.3em 0.5em;
 }
 
-form > table > tbody tr:hover {
+table.interactive > tbody tr:hover {
   background-color: #EEE;
   cursor: pointer;
 }
 
-form > table > tbody tr:active,
-form > table > tbody tr.selected {
+table.interactive > tbody tr:active,
+table.interactive > tbody tr.selected {
   background-color: #E5E5E5;
 }
 
-form > table > tbody tr.reference-format {
+table.interactive > tbody tr.reference-format {
   outline: 1px dashed;
   border-radius: 5px;
   position: sticky;
   top: calc(2.1em + 1px); /* header height: line-height + padding + border */
 }
 
-form > table > tbody td {
+table.interactive > tbody td {
   padding: 5px 9px;
 }
 
-form > table > tfoot {
+table.interactive > tfoot {
   font-size: smaller;
 }
 
-form > table > tbody tr td:last-child,
-form > table > tfoot tr td:last-child {
+table.interactive > tbody tr td:last-child,
+table.interactive > tfoot tr td:last-child {
   font-family: monospace;
   white-space: nowrap;
 }
@@ -98,7 +94,7 @@ input[type=range] {
 }
 
 /* keeps the slider on screen when the list of formats is taller than the viewport */
-form > .slider {
+form {
   position: sticky;
   bottom: 0;
   padding: 1em 0 0.5em 0;
@@ -108,9 +104,9 @@ form > .slider {
 }
 
 /* translucent, so the formats scrolling underneath hint at more content */
-form > table > thead th,
+table.interactive > thead th,
 tr.reference-format,
-form > .slider {
+form {
   background-color: rgba(255, 255, 255, 0.7);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
@@ -143,9 +139,9 @@ body > footer {
     background: transparent;
   }
 
-  form > table > thead th,
+  table.interactive > thead th,
   tr.reference-format,
-  form > .slider {
+  form {
     background-color: rgba(34, 34, 34, 0.7);
   }
 
@@ -158,12 +154,12 @@ body > footer {
     color: #AAA;
   }
 
-  form > table > tbody tr:hover {
+  table.interactive > tbody tr:hover {
     background-color: #555;
   }
 
-  form > table > tbody tr:active,
-  form > table > tbody tr.selected {
+  table.interactive > tbody tr:active,
+  table.interactive > tbody tr.selected {
     background-color: #444;
   }
 }

@@ -4,7 +4,7 @@ var format35mm
 function updateOutputs(e) {
   let largestFormat = formats[formats.length - 1]
   let sliderValue   = largestFormat.normalFocalLength() //default
-  let fovElement    = document.querySelector('form > table > tfoot output')
+  let fovElement    = document.querySelector('table.interactive > tfoot output')
 
   if (e && e.target.value) {
     sliderValue = parseInt(e.target.value)
@@ -25,7 +25,6 @@ function updateOutputs(e) {
 
 function init() {
   let form = document.getElementsByTagName('form')[0]
-  form.style.display = 'initial'
 
   form.addEventListener('input', updateOutputs)
 
@@ -56,16 +55,16 @@ function init() {
     return 0
   })
 
-  _addUIElementsForFormatsToForm(formats, form)
+  _addUIElementsForFormats(formats)
   _initRangeSlider()
   _initTableRowListeners()
 
   _registerServiceWorker()
 }
 
-function _addUIElementsForFormatsToForm(formats, form) {
+function _addUIElementsForFormats(formats) {
   let template  = document.getElementById('formatOutput')
-  let tableBody = document.querySelector('form > table > tbody')
+  let tableBody = document.querySelector('table.interactive > tbody')
 
   formats.forEach(function (format, index, array) {
     let newformatOutput = document.importNode(template.content, true)
@@ -97,7 +96,7 @@ function _initRangeSlider() {
 }
 
 function _initTableRowListeners() {
-  let tableRows = document.querySelectorAll('form > table > tbody > tr')
+  let tableRows = document.querySelectorAll('table.interactive > tbody > tr')
 
   tableRows.forEach(function(tr, index, array) {
     tr.addEventListener('click', function() {

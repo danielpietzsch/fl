@@ -320,33 +320,31 @@
     </figure>
   </noscript>
 
-  <form>
-    <table>
-      <colgroup>
-        <col>
-        <col>
-      </colgroup>
-      <thead>
-        <tr>
-          <th>
-            Format
-          </th>
-          <th><abbr title="Focal Length">&fnof;</abbr></th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td><abbr title="Field of View">FOV</abbr> ⤢</td>
-          <td><output for="focal-length">--</output></td>
-        </tr>
-      </tfoot>
-    </table>
-    <div class="slider">
-      <label for="focal-length">Focal length (&fnof;):</label>
-      <input type="range" id="focal-length" min="0" list="popular-focal-lengths">
-    </div>
+  <table class="interactive">
+    <colgroup>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>
+          Format
+        </th>
+        <th><abbr title="Focal Length">&fnof;</abbr></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><abbr title="Field of View">FOV</abbr> ⤢</td>
+        <td><output for="focal-length">--</output></td>
+      </tr>
+    </tfoot>
+  </table>
+  <form class="interactive">
+    <label for="focal-length">Focal length (&fnof;):</label>
+    <input type="range" id="focal-length" min="0" list="popular-focal-lengths">
     <datalist id="popular-focal-lengths">
     </datalist>
   </form>
