@@ -127,6 +127,11 @@ table.interactive > tfoot tr td:last-child {
   white-space: nowrap;
 }
 
+.unit {
+  color: var(--muted);
+  text-decoration: none;
+}
+
 input[type=range] {
   margin: 0;
   width: 100%;

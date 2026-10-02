@@ -22,7 +22,7 @@ function updateOutputs(e) {
   for (var i = formats.length - 1; i >= 0; i--) {
     let outputElement = document.getElementById(_domIDForFormatName(formats[i].name))
     let equivalentFocalLength = Math.round(formats[i].equivalentToFocalLengthInFormat(sliderValue, largestFormat))
-    outputElement.value = `${equivalentFocalLength} mm`
+    outputElement.value = equivalentFocalLength
   }
 }
 
