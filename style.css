@@ -1,6 +1,15 @@
 :root {
   supported-color-schemes: light dark;
   color-scheme: light dark;
+  --background: light-dark(#FFF, #222);
+  --radius: 5px;
+}
+
+/* older browsers without light-dark() get the system's page color */
+@supports not (color: light-dark(#000, #FFF)) {
+  :root {
+    --background: Canvas;
+  }
 }
 
 /* on iOS, follows the text size chosen in the system settings (Dynamic Type) */
@@ -24,7 +33,7 @@ body {
   margin: auto;
   padding: 2vh 3vw;
   color: light-dark(#000, #DDD);
-  background-color: light-dark(#FFF, #222);
+  background-color: var(--background);
 }
 
 a { color: light-dark(#00E, #88F); }
@@ -69,11 +78,11 @@ table.interactive td, table.interactive th {
 
 /* backgrounds go on the cells, as only those can have rounded corners */
 table.interactive > tbody td:first-child {
-  border-radius: 5px 0 0 5px;
+  border-radius: var(--radius) 0 0 var(--radius);
 }
 
 table.interactive > tbody td:last-child {
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 var(--radius) var(--radius) 0;
 }
 
 table.interactive > tbody tr:hover td {
@@ -88,7 +97,7 @@ table.interactive > tbody tr.selected td {
 
 table.interactive > tbody tr.reference-format {
   outline: 1px dashed;
-  border-radius: 5px;
+  border-radius: var(--radius);
   position: sticky;
   top: calc(2.1em + 1px); /* header height: line-height + padding + border */
 }
@@ -126,8 +135,7 @@ form {
 table.interactive > thead th,
 tr.reference-format td,
 form {
-  background-color: Canvas; /* solid fallback where light-dark() isn't supported */
-  background-color: light-dark(rgba(255, 255, 255, 0.7), rgba(34, 34, 34, 0.7));
+  background-color: color-mix(in srgb, var(--background) 70%, transparent);
   backdrop-filter: blur(4px);
 }
 

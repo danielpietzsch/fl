@@ -18,8 +18,7 @@ noscript table td, noscript table th {
 noscript table tr th {
   position: sticky;
   left: 0;
-  background-color: Canvas;
-  background-color: light-dark(#FFF, #222);
+  background-color: var(--background);
   text-align: right;
   white-space: nowrap;
 }
