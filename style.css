@@ -31,8 +31,6 @@ a { color: light-dark(#00E, #88F); }
 a:visited { color: light-dark(#551A8B, #AAF); }
 
 body > p {
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
   hyphens: auto;
 }
 
@@ -121,7 +119,6 @@ form {
   bottom: 0;
   padding: 1em 0 0.5em 0;
   /* fades in the top edge, within the padding */
-  -webkit-mask-image: linear-gradient(transparent, black 1em);
   mask-image: linear-gradient(transparent, black 1em);
 }
 
@@ -131,7 +128,6 @@ tr.reference-format td,
 form {
   background-color: Canvas; /* solid fallback where light-dark() isn't supported */
   background-color: light-dark(rgba(255, 255, 255, 0.7), rgba(34, 34, 34, 0.7));
-  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
 
