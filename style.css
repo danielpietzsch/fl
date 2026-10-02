@@ -38,7 +38,8 @@ form {
 
 form > table {
   margin: auto; /* spacing below comes from the slider's faded top */
-  border-collapse: collapse;
+  border-collapse: separate; /* so the header's border belongs to its cells and sticks along */
+  border-spacing: 0;
   text-align: right;
 }
 
@@ -47,10 +48,13 @@ form > table col {
 }
 
 /* keeps the column headings on screen while scrolling through the formats */
-form > table > thead th {
+form > table > thead {
   position: sticky;
   top: 0;
-  box-shadow: inset 0 -1px; /* a border wouldn't stick along with it */
+}
+
+form > table > thead th {
+  border-bottom: 1px solid;
 }
 
 form table td, form table th {
@@ -71,7 +75,7 @@ form > table > tbody tr.reference-format {
   outline: 1px dashed;
   border-radius: 5px;
   position: sticky;
-  top: 2.1em; /* header height: line-height + padding */
+  top: calc(2.1em + 1px); /* header height: line-height + padding + border */
 }
 
 form > table > tbody td {
