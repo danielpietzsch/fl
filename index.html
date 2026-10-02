@@ -337,15 +337,13 @@
     </thead>
     <tbody>
     </tbody>
-    <tfoot>
-      <tr>
-        <td><abbr title="Field of View">FOV</abbr> ⤢</td>
-        <td><output for="focal-length" aria-live="off">--</output></td>
-      </tr>
-    </tfoot>
   </table>
   <form class="interactive">
-    <label for="focal-length">Focal length (&fnof;):</label>
+    <label for="focal-length">Focal length (&fnof;)</label>
+    <p class="readout">
+      <output id="focal-length-35mm" for="focal-length" aria-live="off">--</output> <abbr class="unit" title="millimetres">mm</abbr>
+      · <abbr title="Field of View">FOV</abbr> <output id="field-of-view" for="focal-length" aria-live="off">--</output>
+    </p>
     <input type="range" id="focal-length" min="0" list="popular-focal-lengths">
     <datalist id="popular-focal-lengths">
     </datalist>

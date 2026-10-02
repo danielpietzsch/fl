@@ -125,12 +125,8 @@ table.interactive > tbody td {
   padding: 5px 9px;
 }
 
-table.interactive > tfoot {
-  font-size: smaller;
-}
-
 table.interactive > tbody tr td:last-child,
-table.interactive > tfoot tr td:last-child {
+.readout {
   font-family: ui-monospace, monospace;
   white-space: nowrap;
 }
@@ -146,11 +142,30 @@ input[type=range] {
   background: transparent;
 }
 
+/* below the label and readout */
+form > input[type=range] {
+  grid-column: 1 / -1;
+}
+
+.readout {
+  margin: 0;
+  font-size: smaller;
+  color: var(--muted);
+}
+
+.readout output {
+  color: var(--text);
+}
+
 /* keeps the slider on screen when the list of formats is taller than the viewport */
 form {
   position: sticky;
   bottom: 0;
   padding: 1em 0 0.5em 0;
+  /* label and readout on one line, the slider below */
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
   /* fades in the top edge, within the padding */
   mask-image: linear-gradient(transparent, black 1em);
 }

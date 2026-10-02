@@ -4,16 +4,16 @@ var format35mm
 function updateOutputs(e) {
   let largestFormat = formats[formats.length - 1]
   let sliderValue   = largestFormat.normalFocalLength() //default
-  let fovElement    = document.querySelector('table.interactive > tfoot output')
 
   if (e && e.target.value) {
     sliderValue = parseInt(e.target.value)
   }
 
-  // Updating the FOV value
+  // Updating the readout next to the slider
   let fl35mm = Math.round(format35mm.equivalentToFocalLengthInFormat(sliderValue, largestFormat))
   let diagonalFOV = 2 * Math.atan(format35mm.diagonalInMm() / (2 * fl35mm)) * (180 / Math.PI)
-  fovElement.value = `${diagonalFOV.toFixed(0)}°`
+  document.getElementById('focal-length-35mm').value = fl35mm
+  document.getElementById('field-of-view').value = `${diagonalFOV.toFixed(0)}°`
 
   // What screen readers announce when the slider changes (the outputs themselves are silenced)
   document.getElementById('focal-length').setAttribute('aria-valuetext', `${fl35mm} mm in 35mm format, ${diagonalFOV.toFixed(0)}° field of view`)
