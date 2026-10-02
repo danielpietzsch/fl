@@ -154,7 +154,7 @@ form > input[type=range] {
 }
 
 .readout output {
-  color: var(--text);
+  color: var(--accent);
 }
 
 /* keeps the slider on screen when the list of formats is taller than the viewport */
