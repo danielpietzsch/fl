@@ -3,6 +3,13 @@
   color-scheme: light dark;
 }
 
+/* on iOS, follows the text size chosen in the system settings (Dynamic Type) */
+@supports (font: -apple-system-body) and (-webkit-touch-callout: none) {
+  html {
+    font: -apple-system-body;
+  }
+}
+
 @keyframes fade-in {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -11,7 +18,7 @@
 body {
   animation: fade-in 0.4s;
   font-family: system-ui, sans-serif;
-  font-size: calc(1em + 0.7vw);
+  font-size: 1.125em;
   line-height: 1.5;
   max-width: 700px;
   margin: auto;
@@ -127,12 +134,6 @@ body > footer {
   font-size: smaller;
   padding-top: 0.5em;
   border-top: 1px solid;
-}
-
-@media (min-width: 701px) {
-  body {
-    font-size: 1.306em;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
