@@ -1,0 +1,14 @@
+# Publishes the site with GitLab Pages, from the default branch only.
+# GitLab Pages serves whatever ends up in public/, so the site's files are copied there.
+# It doesn't compress on the fly, but serves a file's .gz version if there is one.
+pages:
+  image: alpine:latest
+  script:
+    - mkdir public
+    - cp *.html *.css *.js *.json *.png public/
+    - for file in public/*.html public/*.css public/*.js public/*.json; do gzip -9 -c "$file" > "$file.gz"; done
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
