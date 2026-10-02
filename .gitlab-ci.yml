@@ -1,0 +1,12 @@
+# Publishes the site with GitLab Pages, from the default branch only.
+# GitLab Pages serves whatever ends up in public/, so the site's files are copied there.
+pages:
+  image: alpine:latest
+  script:
+    - mkdir public
+    - cp *.html *.css *.js *.json *.png public/
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
