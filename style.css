@@ -3,6 +3,13 @@
   color-scheme: light dark;
 }
 
+/* on iOS, follows the text size chosen in the system settings (Dynamic Type) */
+@supports (font: -apple-system-body) and (-webkit-touch-callout: none) {
+  html {
+    font: -apple-system-body;
+  }
+}
+
 @keyframes fade-in {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -11,9 +18,9 @@
 body {
   animation: fade-in 0.4s;
   font-family: system-ui, sans-serif;
-  font-size: calc(1em + 0.7vw);
+  font-size: 1.125em;
   line-height: 1.5;
-  max-width: 700px;
+  max-width: 34em;
   margin: auto;
   padding: 2vh 3vw;
 }
@@ -32,54 +39,68 @@ body p small {
   font-style: italic;
 }
 
-form {
-  display: none; /* show only via JS */
-}
-
-form > table {
-  margin: auto auto 1em auto;
-  border-collapse: collapse;
+table.interactive {
+  margin: auto; /* spacing below comes from the slider's faded top */
+  border-collapse: separate; /* so the header's border belongs to its cells and sticks along */
+  border-spacing: 0;
   text-align: right;
 }
 
-form > table col {
+table.interactive col {
   width: 50%;
 }
 
-form > table > thead {
+/* keeps the column headings on screen while scrolling through the formats */
+table.interactive > thead {
+  position: sticky;
+  top: 0;
+}
+
+table.interactive > thead th {
   border-bottom: 1px solid;
 }
 
-form table td, form table th {
+table.interactive td, table.interactive th {
   padding: 0.3em 0.5em;
 }
 
-form > table > tbody tr:hover {
+/* backgrounds go on the cells, as only those can have rounded corners */
+table.interactive > tbody td:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+table.interactive > tbody td:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+table.interactive > tbody tr:hover td {
   background-color: #EEE;
   cursor: pointer;
 }
 
-form > table > tbody tr:active,
-form > table > tbody tr.selected {
+table.interactive > tbody tr:active td,
+table.interactive > tbody tr.selected td {
   background-color: #E5E5E5;
 }
 
-form > table > tbody tr.reference-format {
+table.interactive > tbody tr.reference-format {
   outline: 1px dashed;
   border-radius: 5px;
+  position: sticky;
+  top: calc(2.1em + 1px); /* header height: line-height + padding + border */
 }
 
-form > table > tbody td {
+table.interactive > tbody td {
   padding: 5px 9px;
 }
 
-form > table > tfoot {
+table.interactive > tfoot {
   font-size: smaller;
 }
 
-form > table > tbody tr td:last-child,
-form > table > tfoot tr td:last-child {
-  font-family: monospace;
+table.interactive > tbody tr td:last-child,
+table.interactive > tfoot tr td:last-child {
+  font-family: ui-monospace, monospace;
   white-space: nowrap;
 }
 
@@ -88,18 +109,31 @@ input[type=range] {
   width: 100%;
 }
 
+/* keeps the slider on screen when the list of formats is taller than the viewport */
+form {
+  position: sticky;
+  bottom: 0;
+  padding: 1em 0 0.5em 0;
+  /* fades in the top edge, within the padding */
+  -webkit-mask-image: linear-gradient(transparent, black 1em);
+  mask-image: linear-gradient(transparent, black 1em);
+}
+
+/* translucent, so the formats scrolling underneath hint at more content */
+table.interactive > thead th,
+tr.reference-format td,
+form {
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
 body > footer {
   text-align: center;
   margin-top: 2em;
   font-size: smaller;
   padding-top: 0.5em;
   border-top: 1px solid;
-}
-
-@media (min-width: 701px) {
-  body {
-    font-size: 1.306em;
-  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -115,6 +149,12 @@ body > footer {
     background: transparent;
   }
 
+  table.interactive > thead th,
+  tr.reference-format td,
+  form {
+    background-color: rgba(34, 34, 34, 0.7);
+  }
+
   input[type=range]::-moz-range-track,
   input[type=range]::-webkit-slider-runnable-track {
     background: #DDD;
@@ -124,12 +164,12 @@ body > footer {
     color: #AAA;
   }
 
-  form > table > tbody tr:hover {
+  table.interactive > tbody tr:hover td {
     background-color: #555;
   }
 
-  form > table > tbody tr:active,
-  form > table > tbody tr.selected {
+  table.interactive > tbody tr:active td,
+  table.interactive > tbody tr.selected td {
     background-color: #444;
   }
 }

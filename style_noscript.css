@@ -1,3 +1,7 @@
+.interactive {
+  display: none;
+}
+
 noscript figure {
   overflow-x: scroll;
   margin: 0;

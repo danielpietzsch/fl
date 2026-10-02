@@ -4,6 +4,7 @@
   <title>Focal Length Equivalents</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="text-scale" content="scale">
 
   <meta property="og:title" content="Focal Length Equivalents">
   <meta name="Description" property="og:description" content="Find the 35mm/full-frame equivalent to a focal length in different sensor- or film-format.">
@@ -46,7 +47,7 @@
   <template id="formatOutput">
     <tr>
       <td></td>
-      <td><output for="focal-length">--</output></td>
+      <td><output for="focal-length" aria-live="off">--</output></td>
     </tr>
   </template>
 </head>
@@ -320,29 +321,29 @@
     </figure>
   </noscript>
 
-  <form>
-    <table>
-      <colgroup>
-        <col>
-        <col>
-      </colgroup>
-      <thead>
-        <tr>
-          <th>
-            Format
-          </th>
-          <th><abbr title="Focal Length">&fnof;</abbr></th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td><abbr title="Field of View">FOV</abbr> ⤢</td>
-          <td><output for="focal-length">--</output></td>
-        </tr>
-      </tfoot>
-    </table>
+  <table class="interactive">
+    <colgroup>
+      <col>
+      <col>
+    </colgroup>
+    <thead>
+      <tr>
+        <th>
+          Format
+        </th>
+        <th><abbr title="Focal Length">&fnof;</abbr></th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td><abbr title="Field of View">FOV</abbr> ⤢</td>
+        <td><output for="focal-length" aria-live="off">--</output></td>
+      </tr>
+    </tfoot>
+  </table>
+  <form class="interactive">
     <label for="focal-length">Focal length (&fnof;):</label>
     <input type="range" id="focal-length" min="0" list="popular-focal-lengths">
     <datalist id="popular-focal-lengths">
