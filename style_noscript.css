@@ -24,12 +24,12 @@ noscript table tr th {
 }
 
 noscript table tr td {
-  font-family: monospace;
+  font-family: ui-monospace, monospace;
   text-align: right;
 }
 
 noscript table col:nth-of-type(even) {
-  background-color: light-dark(#EEE, #111);
+  background-color: light-dark(#EAEFF4, #0A121A);
 }
 
 noscript table td {
@@ -41,7 +41,7 @@ noscript table tr.full-frame {
 }
 
 noscript table tr:hover {
-  background-color: rgba(238, 238, 238, .4);
+  background-color: color-mix(in srgb, var(--hover) 40%, transparent);
 }
 
 noscript table col:hover {
