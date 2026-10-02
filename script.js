@@ -15,6 +15,9 @@ function updateOutputs(e) {
   let diagonalFOV = 2 * Math.atan(format35mm.diagonalInMm() / (2 * fl35mm)) * (180 / Math.PI)
   fovElement.value = `${diagonalFOV.toFixed(0)}°`
 
+  // What screen readers announce when the slider changes (the outputs themselves are silenced)
+  document.getElementById('focal-length').setAttribute('aria-valuetext', `${fl35mm} mm in 35mm format, ${diagonalFOV.toFixed(0)}° field of view`)
+
   // Updating all focal length values
   for (var i = formats.length - 1; i >= 0; i--) {
     let outputElement = document.getElementById(_domIDForFormatName(formats[i].name))
