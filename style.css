@@ -110,10 +110,13 @@ table.interactive > tbody tr.selected td {
 }
 
 table.interactive > tbody tr.reference-format {
-  outline: 1px dashed;
-  border-radius: var(--radius);
   position: sticky;
   top: calc(2.1em + 1px); /* header height: line-height + padding + border */
+}
+
+tr.reference-format td {
+  color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 15%, var(--background));
 }
 
 table.interactive > tbody td {
@@ -152,7 +155,6 @@ form {
 
 /* translucent, so the formats scrolling underneath hint at more content */
 table.interactive > thead th,
-tr.reference-format td,
 form {
   background-color: color-mix(in srgb, var(--background) 70%, transparent);
   backdrop-filter: blur(4px);
