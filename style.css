@@ -1,10 +1,13 @@
 :root {
   supported-color-schemes: light dark;
   color-scheme: light dark;
-  --background: light-dark(#FFF, #222);
-  --text: light-dark(#1A1A1A, #DDD);
-  --muted: light-dark(#666, #AAA);
-  --line: light-dark(#CCC, #555);
+  /* neutrals slightly tinted towards the accent's blue, a bit more in dark mode */
+  --background: light-dark(#FFF, #1A222B);
+  --text: light-dark(#171B1F, #D6DBE1);
+  --muted: light-dark(#60676F, #A5AFBA);
+  --line: light-dark(#C9CED4, #4B5763);
+  --hover: light-dark(#EAEFF4, #3E4955);
+  --selected: light-dark(#DFE5EC, #313C47);
   --accent: light-dark(#2563A8, #7FB2E5);
   --visited: light-dark(#6B4FA0, #B49BE0);
   --radius: 5px;
@@ -97,13 +100,13 @@ table.interactive > tbody td:last-child {
 }
 
 table.interactive > tbody tr:hover td {
-  background-color: light-dark(#EEE, #555);
+  background-color: var(--hover);
   cursor: pointer;
 }
 
 table.interactive > tbody tr:active td,
 table.interactive > tbody tr.selected td {
-  background-color: light-dark(#E5E5E5, #444);
+  background-color: var(--selected);
 }
 
 table.interactive > tbody tr.reference-format {
