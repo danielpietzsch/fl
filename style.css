@@ -6,10 +6,12 @@
   --text: light-dark(#171B1F, #D6DBE1);
   --muted: light-dark(#60676F, #A5AFBA);
   --line: light-dark(#C9CED4, #4B5763);
-  --hover: light-dark(#EAEFF4, #3E4955);
-  --selected: light-dark(#DFE5EC, #313C47);
   --accent: light-dark(#2563A8, #7FB2E5);
   --visited: light-dark(#6B4FA0, #B49BE0);
+  /* row highlights: tints of the accent, strongest for the 35mm reference row */
+  --hover: color-mix(in srgb, var(--accent) 5%, var(--background));
+  --selected: color-mix(in srgb, var(--accent) 9%, var(--background));
+  --reference: color-mix(in srgb, var(--accent) 15%, var(--background));
   --radius: 5px;
 }
 
@@ -116,7 +118,7 @@ table.interactive > tbody tr.reference-format {
 
 tr.reference-format td {
   color: var(--accent);
-  background-color: color-mix(in srgb, var(--accent) 15%, var(--background));
+  background-color: var(--reference);
 }
 
 table.interactive > tbody td {
