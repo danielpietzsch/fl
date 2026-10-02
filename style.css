@@ -93,7 +93,7 @@ table.interactive > tfoot {
 
 table.interactive > tbody tr td:last-child,
 table.interactive > tfoot tr td:last-child {
-  font-family: monospace;
+  font-family: ui-monospace, monospace;
   white-space: nowrap;
 }
 
