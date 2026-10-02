@@ -2,6 +2,11 @@
   supported-color-schemes: light dark;
   color-scheme: light dark;
   --background: light-dark(#FFF, #222);
+  --text: light-dark(#1A1A1A, #DDD);
+  --muted: light-dark(#666, #AAA);
+  --line: light-dark(#CCC, #555);
+  --accent: light-dark(#2563A8, #7FB2E5);
+  --visited: light-dark(#6B4FA0, #B49BE0);
   --radius: 5px;
 }
 
@@ -32,19 +37,25 @@ body {
   max-width: 34em;
   margin: auto;
   padding: 2vh 3vw;
-  color: light-dark(#000, #DDD);
+  color: var(--text);
   background-color: var(--background);
+  accent-color: var(--accent);
 }
 
-a { color: light-dark(#00E, #88F); }
-a:visited { color: light-dark(#551A8B, #AAF); }
+a { color: var(--accent); }
+a:visited { color: var(--visited); }
+
+h1, h2 {
+  line-height: 1.2;
+  text-wrap: balance;
+}
 
 body > p {
   hyphens: auto;
 }
 
 small, tfoot {
-  color: light-dark(#666, #AAA);
+  color: var(--muted);
 }
 
 body p small {
@@ -69,7 +80,7 @@ table.interactive > thead {
 }
 
 table.interactive > thead th {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid var(--line);
 }
 
 table.interactive td, table.interactive th {
@@ -144,7 +155,7 @@ body > footer {
   margin-top: 2em;
   font-size: smaller;
   padding-top: 0.5em;
-  border-top: 1px solid;
+  border-top: 1px solid var(--line);
 }
 
 summary {
