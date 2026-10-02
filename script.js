@@ -1,27 +1,31 @@
 var formats
 var format35mm
 
-function updateOutputs(e) {
-  let largestFormat = formats[formats.length - 1]
-  let sliderValue   = largestFormat.normalFocalLength() //default
+// Temporary: the logarithmic slider is only used with ?scale=log
+const logScale = new URLSearchParams(location.search).get('scale') === 'log'
 
-  if (e && e.target.value) {
-    sliderValue = parseInt(e.target.value)
-  }
+// The slider's range, as focal lengths in 35mm format.
+// Linear, each step is 1 mm. Logarithmic, each step changes the focal length by the same factor (about 2%).
+const minFocalLength = 10
+const maxFocalLength = logScale ? 500 : 200
+const sliderSteps    = 190
+
+function updateOutputs() {
+  let focalLengthSlider = document.getElementById('focal-length')
+  let fl35mm = _focalLengthForSliderValue(parseInt(focalLengthSlider.value))
 
   // Updating the readout next to the slider
-  let fl35mm = Math.round(format35mm.equivalentToFocalLengthInFormat(sliderValue, largestFormat))
   let diagonalFOV = 2 * Math.atan(format35mm.diagonalInMm() / (2 * fl35mm)) * (180 / Math.PI)
-  document.getElementById('focal-length-35mm').value = fl35mm
+  document.getElementById('focal-length-35mm').value = Math.round(fl35mm)
   document.getElementById('field-of-view').value = `${diagonalFOV.toFixed(0)}°`
 
   // What screen readers announce when the slider changes (the outputs themselves are silenced)
-  document.getElementById('focal-length').setAttribute('aria-valuetext', `${fl35mm} mm in 35mm format, ${diagonalFOV.toFixed(0)}° field of view`)
+  focalLengthSlider.setAttribute('aria-valuetext', `${Math.round(fl35mm)} mm in 35mm format, ${diagonalFOV.toFixed(0)}° field of view`)
 
   // Updating all focal length values
   for (var i = formats.length - 1; i >= 0; i--) {
     let outputElement = document.getElementById(_domIDForFormatName(formats[i].name))
-    let equivalentFocalLength = Math.round(formats[i].equivalentToFocalLengthInFormat(sliderValue, largestFormat))
+    let equivalentFocalLength = Math.round(formats[i].equivalentToFocalLengthInFormat(fl35mm, format35mm))
     outputElement.value = equivalentFocalLength
   }
 }
@@ -85,17 +89,44 @@ function _addUIElementsForFormats(formats) {
 }
 
 function _initRangeSlider() {
-  let largestFormat     = formats[formats.length - 1]
   let focalLengthSlider = document.getElementById('focal-length')
 
-  focalLengthSlider.setAttribute('max', Math.round(largestFormat.equivalentToFocalLengthInFormat(200, format35mm)))
-  focalLengthSlider.value = largestFormat.normalFocalLength()
+  focalLengthSlider.setAttribute('max', sliderSteps)
+  focalLengthSlider.value = _sliderValueForFocalLength(format35mm.diagonalInMm())
 
   let datalist = document.getElementById('popular-focal-lengths')
 
   format35mm.commonFocalLengths.forEach(function (focalLength, index, array) {
-    datalist.insertAdjacentHTML('beforeend', `<option label="ƒ=${Math.round(focalLength)}mm in 35mm format">${Math.round(largestFormat.equivalentToFocalLengthInFormat(focalLength, format35mm))}</option>`)
+    datalist.insertAdjacentHTML('beforeend', `<option label="ƒ=${Math.round(focalLength)}mm in 35mm format">${_sliderValueForFocalLength(focalLength)}</option>`)
   })
+}
+
+function _focalLengthForSliderValue(sliderValue) {
+  // The step closest to a popular focal length snaps to it, so all of them can be reached exactly
+  let popularFocalLength = format35mm.commonFocalLengths.find(function (popular) {
+    return Math.abs(_sliderPositionForFocalLength(popular) - sliderValue) <= 0.5
+  })
+  if (popularFocalLength) return popularFocalLength
+
+  let fraction = sliderValue / sliderSteps
+  if (logScale) {
+    return minFocalLength * Math.pow(maxFocalLength / minFocalLength, fraction)
+  } else {
+    return minFocalLength + (maxFocalLength - minFocalLength) * fraction
+  }
+}
+
+function _sliderValueForFocalLength(focalLength) {
+  return Math.round(_sliderPositionForFocalLength(focalLength))
+}
+
+// The exact (unrounded) slider position for a focal length
+function _sliderPositionForFocalLength(focalLength) {
+  if (logScale) {
+    return sliderSteps * Math.log(focalLength / minFocalLength) / Math.log(maxFocalLength / minFocalLength)
+  } else {
+    return sliderSteps * (focalLength - minFocalLength) / (maxFocalLength - minFocalLength)
+  }
 }
 
 function _initTableRowListeners() {
