@@ -20,7 +20,8 @@ noscript table tr th {
   position: -webkit-sticky;
   position: sticky;
   left: 0;
-  background-color: white;
+  background-color: Canvas;
+  background-color: light-dark(#FFF, #222);
   text-align: right;
   white-space: nowrap;
 }
@@ -31,7 +32,7 @@ noscript table tr td {
 }
 
 noscript table col:nth-of-type(even) {
-  background-color: #eee;
+  background-color: light-dark(#EEE, #111);
 }
 
 noscript table td {
@@ -39,7 +40,7 @@ noscript table td {
 }
 
 noscript table tr.full-frame {
-  outline: 1px dashed black;
+  outline: 1px dashed;
 }
 
 noscript table tr:hover {
@@ -48,18 +49,4 @@ noscript table tr:hover {
 
 noscript table col:hover {
   font-size: 2em;
-}
-
-@media (prefers-color-scheme: dark) {
-  noscript table tr th {
-    background-color: #222;
-  }
-
-  noscript table col:nth-of-type(even) {
-    background-color: #111;
-  }
-
-  noscript table tr.full-frame {
-    outline-color: white;
-  }
 }

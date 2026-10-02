@@ -23,7 +23,12 @@ body {
   max-width: 34em;
   margin: auto;
   padding: 2vh 3vw;
+  color: light-dark(#000, #DDD);
+  background-color: light-dark(#FFF, #222);
 }
+
+a { color: light-dark(#00E, #88F); }
+a:visited { color: light-dark(#551A8B, #AAF); }
 
 body > p {
   -webkit-hyphens: auto;
@@ -32,7 +37,7 @@ body > p {
 }
 
 small, tfoot {
-  color: #666;
+  color: light-dark(#666, #AAA);
 }
 
 body p small {
@@ -74,13 +79,13 @@ table.interactive > tbody td:last-child {
 }
 
 table.interactive > tbody tr:hover td {
-  background-color: #EEE;
+  background-color: light-dark(#EEE, #555);
   cursor: pointer;
 }
 
 table.interactive > tbody tr:active td,
 table.interactive > tbody tr.selected td {
-  background-color: #E5E5E5;
+  background-color: light-dark(#E5E5E5, #444);
 }
 
 table.interactive > tbody tr.reference-format {
@@ -107,6 +112,7 @@ table.interactive > tfoot tr td:last-child {
 input[type=range] {
   margin: 0;
   width: 100%;
+  background: transparent;
 }
 
 /* keeps the slider on screen when the list of formats is taller than the viewport */
@@ -123,7 +129,8 @@ form {
 table.interactive > thead th,
 tr.reference-format td,
 form {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: Canvas; /* solid fallback where light-dark() isn't supported */
+  background-color: light-dark(rgba(255, 255, 255, 0.7), rgba(34, 34, 34, 0.7));
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
 }
@@ -134,44 +141,6 @@ body > footer {
   font-size: smaller;
   padding-top: 0.5em;
   border-top: 1px solid;
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    color: #DDD;
-    background-color: #222;
-  }
-
-  a { color: #88F; }
-  a:visited { color: #AAF; }
-
-  input[type=range] {
-    background: transparent;
-  }
-
-  table.interactive > thead th,
-  tr.reference-format td,
-  form {
-    background-color: rgba(34, 34, 34, 0.7);
-  }
-
-  input[type=range]::-moz-range-track,
-  input[type=range]::-webkit-slider-runnable-track {
-    background: #DDD;
-  }
-
-  small, tfoot {
-    color: #AAA;
-  }
-
-  table.interactive > tbody tr:hover td {
-    background-color: #555;
-  }
-
-  table.interactive > tbody tr:active td,
-  table.interactive > tbody tr.selected td {
-    background-color: #444;
-  }
 }
 
 summary {
