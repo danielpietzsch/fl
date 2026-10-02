@@ -1,8 +1,8 @@
 var formats
 var format35mm
 
-// Temporary: the logarithmic slider is only used with ?scale=log
-const logScale = new URLSearchParams(location.search).get('scale') === 'log'
+// Temporary: the old, linear slider is still available with ?scale=linear
+const logScale = new URLSearchParams(location.search).get('scale') !== 'linear'
 
 // The slider's range, as focal lengths in 35mm format.
 // Linear, each step adds the same length. Logarithmic, each step changes the focal length by the same factor.
