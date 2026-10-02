@@ -64,6 +64,8 @@ function init() {
 
   _addUIElementsForFormats(formats)
   _initRangeSlider()
+  // Temporary: marking the current scale in the switch in the footer
+  document.querySelector(`[data-scale="${logScale ? 'log' : 'linear'}"]`).setAttribute('aria-current', 'true')
   _initTableRowListeners()
 
   _registerServiceWorker()
