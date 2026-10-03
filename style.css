@@ -177,7 +177,7 @@ form {
 /* as an installed app, there's no browser toolbar below the slider, so it needs room to stay clear of the system's swipe gestures */
 @media (display-mode: standalone) {
   form {
-    padding-bottom: 2em;
+    padding-bottom: 2.5em;
   }
 }
 
