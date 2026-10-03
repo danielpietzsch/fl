@@ -174,6 +174,13 @@ form {
   mask-image: linear-gradient(transparent, black 1em);
 }
 
+/* as an installed app, there's no browser toolbar below the slider, so it needs room to stay clear of the system's swipe gestures */
+@media (display-mode: standalone) {
+  form {
+    padding-bottom: 2em;
+  }
+}
+
 /* translucent, so the formats scrolling underneath hint at more content */
 table.interactive > thead th,
 form {
