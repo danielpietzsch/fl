@@ -196,13 +196,6 @@ body > footer {
   border-top: 1px solid var(--line);
 }
 
-/* temporary: the current scale in the switch in the footer */
-footer a[aria-current] {
-  color: inherit;
-  font-weight: bold;
-  text-decoration: none;
-}
-
 summary {
   cursor: pointer;
 }
