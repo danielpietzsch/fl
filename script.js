@@ -1,13 +1,10 @@
 var formats
 var format35mm
 
-// Temporary: the old, linear slider is still available with ?scale=linear
-const logScale = new URLSearchParams(location.search).get('scale') !== 'linear'
-
 // The slider's range, as focal lengths in 35mm format.
-// Linear, each step adds the same length. Logarithmic, each step changes the focal length by the same factor.
+// It's logarithmic: each step changes the focal length by the same factor.
 const minFocalLength = 10
-const maxFocalLength = logScale ? 500 : 200
+const maxFocalLength = 500
 
 // Set in _initRangeSlider, so that each step changes the largest format's focal length by at most 1 mm,
 // which keeps every whole mm reachable in every format
@@ -96,11 +93,7 @@ function _initRangeSlider() {
   let focalLengthSlider = document.getElementById('focal-length')
   let largestFormatRatio = formats[formats.length - 1].diagonalInMm() / format35mm.diagonalInMm()
 
-  if (logScale) {
-    sliderSteps = Math.ceil(Math.log(maxFocalLength / minFocalLength) / Math.log(1 + 1 / (maxFocalLength * largestFormatRatio)))
-  } else {
-    sliderSteps = Math.ceil((maxFocalLength - minFocalLength) * largestFormatRatio)
-  }
+  sliderSteps = Math.ceil(Math.log(maxFocalLength / minFocalLength) / Math.log(1 + 1 / (maxFocalLength * largestFormatRatio)))
 
   focalLengthSlider.setAttribute('max', sliderSteps)
   focalLengthSlider.value = _sliderValueForFocalLength(format35mm.diagonalInMm())
@@ -119,12 +112,7 @@ function _focalLengthForSliderValue(sliderValue) {
   })
   if (popularFocalLength) return popularFocalLength
 
-  let fraction = sliderValue / sliderSteps
-  if (logScale) {
-    return minFocalLength * Math.pow(maxFocalLength / minFocalLength, fraction)
-  } else {
-    return minFocalLength + (maxFocalLength - minFocalLength) * fraction
-  }
+  return minFocalLength * Math.pow(maxFocalLength / minFocalLength, sliderValue / sliderSteps)
 }
 
 function _sliderValueForFocalLength(focalLength) {
@@ -133,11 +121,7 @@ function _sliderValueForFocalLength(focalLength) {
 
 // The exact (unrounded) slider position for a focal length
 function _sliderPositionForFocalLength(focalLength) {
-  if (logScale) {
-    return sliderSteps * Math.log(focalLength / minFocalLength) / Math.log(maxFocalLength / minFocalLength)
-  } else {
-    return sliderSteps * (focalLength - minFocalLength) / (maxFocalLength - minFocalLength)
-  }
+  return sliderSteps * Math.log(focalLength / minFocalLength) / Math.log(maxFocalLength / minFocalLength)
 }
 
 // The slider's steps are very fine, so the keys move it in more useful amounts: the arrow keys to the next
