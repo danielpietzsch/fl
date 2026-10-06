@@ -4,7 +4,7 @@ var format35mm
 // The slider's range, as focal lengths in 35mm format.
 // It's logarithmic: each step changes the focal length by the same factor.
 const minFocalLength = 10
-const maxFocalLength = 500
+const maxFocalLength = 400
 
 // Set in _initRangeSlider, so that each step changes the largest format's focal length by at most 1 mm,
 // which keeps every whole mm reachable in every format
@@ -36,7 +36,7 @@ function init() {
   form.addEventListener('input', updateOutputs)
 
   format35mm = new ImagingFormat("35mm", 36, 24)
-  format35mm.setCommonFocalLengths([10, 14, 16, 20, 21, 24, 28, 35, format35mm.diagonalInMm(), 50, 70, 85, 100, 135, 200, 300, 400, 500])
+  format35mm.setCommonFocalLengths([10, 14, 16, 20, 21, 24, 28, 35, format35mm.diagonalInMm(), 50, 70, 85, 100, 135, 200, 300, 400])
 
   formats = [
     new ImagingFormat("16mm", 10.26, 7.49),
