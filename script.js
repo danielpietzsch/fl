@@ -39,7 +39,7 @@ function init() {
   form.addEventListener('input', updateOutputs)
 
   format35mm = new ImagingFormat("35mm", 36, 24)
-  format35mm.setCommonFocalLengths([10, 14, 16, 21, 24, 28, 35, format35mm.diagonalInMm(), 50, 70, 85, 100, 135, 200, 300, 400, 500])
+  format35mm.setCommonFocalLengths([10, 14, 16, 20, 21, 24, 28, 35, format35mm.diagonalInMm(), 50, 70, 85, 100, 135, 200, 300, 400, 500])
 
   formats = [
     new ImagingFormat("16mm", 10.26, 7.49),
